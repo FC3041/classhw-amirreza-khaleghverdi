@@ -26,17 +26,6 @@ public:
         return m_size;
     }
 
-   
-    int count(int value) const {
-        int counter = 0;
-        for (int i = 0; i < m_size; i++) {
-            if (m_Pnums[i] == value) {
-                counter++;
-            }
-        }
-        return counter;
-    }
-
 private:
     void resize(int newsize) {
         int* newMem = (int*)malloc(sizeof(int) * newsize);
@@ -54,9 +43,8 @@ int main() {
     MyList m(5, nums);
     m.append(14);
 
-    cout << "Length of the list: " << m.length() << endl; // Should print 6
-    cout << "Count of value 3: " << m.count(3) << endl;   // Should print 1
-    cout << "Count of value 14: " << m.count(14) << endl; // Should print 1
+    cout << "Length of the list: " << m.length() << endl;
+    
 
     return 0;
 }
