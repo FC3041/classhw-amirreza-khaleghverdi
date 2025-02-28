@@ -29,7 +29,7 @@ public:
     {
         for (int i = 0; i < m_CoursesPassed; i++)
         {
-            delete[] m_CourseNames[i]; // Free dynamically allocated memory
+            delete[] m_CourseNames[i]; 
         }
     }
 

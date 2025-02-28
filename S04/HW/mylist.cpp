@@ -7,7 +7,6 @@ public:
     int m_size;
     int* m_Pnums;
 
-
     MyList(int size, int* nums) : m_size(size) {
         m_Pnums = (int*)malloc(sizeof(int) * size);
         for (int i = 0; i < m_size; i++) {
@@ -15,21 +14,34 @@ public:
         }
     }
 
+    ~MyList() {
+        free(m_Pnums);
+    }
 
     void append(int x) {
         resize(m_size + 1);
         m_Pnums[m_size - 1] = x;
     }
 
-
-    int length() const {
+    int len() const {
         return m_size;
+    }
+
+    int pop() {
+        
+        int lastElement = m_Pnums[m_size - 1];
+        resize(m_size - 1);
+        return lastElement;
+    }
+
+    int at(int index) const {
+        return m_Pnums[index];
     }
 
 private:
     void resize(int newsize) {
         int* newMem = (int*)malloc(sizeof(int) * newsize);
-        for (int i = 0; i < m_size; i++) {
+        for (int i = 0; i < m_size && i < newsize; i++) {
             newMem[i] = m_Pnums[i];
         }
         free(m_Pnums);
@@ -43,8 +55,12 @@ int main() {
     MyList m(5, nums);
     m.append(14);
 
-    cout << "Length of the list: " << m.length() << endl;
-    
+    cout << "the length is : " << m.len() << endl;
+    int poppedValue = m.pop();
+    cout << "Popped value is: " << poppedValue << endl;
+    cout << "length after pop: " << m.len() << endl;
+    int index = 2;
+    cout << "element at index " << index << ": " << m.at(index) << endl;
 
     return 0;
 }
