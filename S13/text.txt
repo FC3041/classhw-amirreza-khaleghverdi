@@ -1,0 +1,3 @@
+designe pattern 
+strategic pattern
+single tune pattern
